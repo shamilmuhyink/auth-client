@@ -1,7 +1,7 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError, of } from 'rxjs';
-import { catchError, map, tap, switchMap, filter, take } from 'rxjs/operators';
+import { catchError, map, tap, switchMap, filter, take, finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { PlatformService } from './platform.service';
@@ -31,6 +31,7 @@ export class AuthService {
   private refreshTokenInProgress = false;
   private refreshTokenSubject: BehaviorSubject<string | null> =
     new BehaviorSubject<string | null>(null);
+  private processingOAuthCallback = false;
 
   constructor(
     private http: HttpClient,
@@ -363,28 +364,40 @@ export class AuthService {
     return base64URLEncode(new Uint8Array(digest));
   }
 
+  // Flow starts in AuthService when user clicks Google login
   async initiateGoogleLogin(): Promise<void> {
+    // 1. Generate PKCE codes
     const codeVerifier = this.generateCodeVerifier();
     const codeChallenge = await this.generateCodeChallenge(codeVerifier);
 
+    // 2. Store verifier for later use
     this.platformService.setLocalStorageItem('code_verifier', codeVerifier);
 
+    // 3. Build OAuth2 URL with required parameters
     const params = new URLSearchParams({
       client_id: environment.oauth.google.clientId,
       redirect_uri: environment.oauth.google.redirectUri,
-      response_type: 'code',
-      scope: 'openid profile email',
+      response_type: environment.oauth.google.responseType,
+      scope: environment.oauth.google.scope.join(' '),
       code_challenge: codeChallenge,
-      code_challenge_method: 'S256',
+      code_challenge_method: 'S256'
     });
 
-    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
+    // 4. Redirect to Google's auth page
+    window.location.href = `${environment.oauth.google.authorizationEndpoint}?${params.toString()}`;
   }
 
   handleOAuth2Callback(
     code: string,
     codeVerifier: string | null = null
   ): Observable<AuthResponse> {
+    // If already processing, return an observable that errors
+    if (this.processingOAuthCallback) {
+      return throwError(() => new Error('OAuth callback already in progress'));
+    }
+    
+    this.processingOAuthCallback = true;
+    
     return this.http
       .post<AuthResponse>(`${environment.apiUrl}/auth/oauth/callback`, {
         code,
@@ -393,6 +406,10 @@ export class AuthService {
       })
       .pipe(
         tap((response) => this.setSession(response)),
+        finalize(() => {
+          // Reset the flag when done
+          this.processingOAuthCallback = false;
+        }),
         catchError((error) => throwError(() => error))
       );
   }
