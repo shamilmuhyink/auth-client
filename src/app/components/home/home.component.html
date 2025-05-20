@@ -1,0 +1,165 @@
+<div class="container">
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-container">
+            <a href="#" class="logo">
+                <img src="assets/images/logo.svg" alt="Logo">
+                <span>appherm</span>
+            </a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#" class="active">Catalog hermes</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Payment</a></li>
+                <li><a href="#">Delivery</a></li>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contacts</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button class="btn-search">
+                <i class="icon-search"></i>
+            </button>
+            <button class="btn-cart">
+                <i class="icon-cart"></i>
+                <span class="cart-count">0</span>
+            </button>
+        </div>
+    </header>
+    <app-header></app-header>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Apple Hermes</h1>
+            <div class="product-details">
+                <div class="product-info">
+                    <h2>Hermès Kilim<br>Single Tour</h2>
+                    <p>The sportiest Hermès strap yet. Made from waterproof moulded rubber with a deployment buckle.</p>
+                    <div class="size-selector">
+                        <button class="size-btn">M</button>
+                        <button class="size-btn">L</button>
+                        <button class="buy-btn">Buy £299.00</button>
+                    </div>
+                    <div class="next-adventure">
+                        <a href="#">Next-level adventure <i class="icon-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="product-image">
+                    <!-- <img src="assets/images/shoe.jpg" alt="Hero_img"> -->
+                    <img [src]="'/assets/images/shoe.jpg'" alt="Hero_img" (error)="handleImageError($event)"
+                        loading="lazy">
+                    <div class="color-selector">
+                        <button class="color-dot active"></button>
+                        <button class="color-dot"></button>
+                        <button class="color-dot"></button>
+                        <button class="color-dot"></button>
+                    </div>
+                </div>
+                <div class="product-highlights">
+                    <div class="highlight-box">
+                        <div class="highlight-image">
+                            <img src="assets/images/shoe_2.jpg" alt="Sidebar_img" />
+                        </div>
+                        <div class="highlight-now">Now</div>
+                        <h3>The sportiest Hermès strap yet</h3>
+                        <p>Made from waterproof moulded rubber with an H motif</p>
+                        <a href="#" class="read-more">Read more</a>
+                    </div>
+                    <div class="specifications">
+                        <div class="spec-row">
+                            <span class="spec-label">Material:</span>
+                            <span class="spec-value">Fluoroelastomer</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Weight:</span>
+                            <span class="spec-value">32h</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">Size:</span>
+                            <span class="spec-value">140 mm</span>
+                        </div>
+                        <div class="one-size-fits-most">
+                            <i class="icon-info"></i>
+                            <span>One Size (Fits Most)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="watch-variants">
+            <div class="watch-variant">
+                <img src="assets/images/shoe_3.jpg" alt="Nike Sport Band">
+                <span class="variant-name">Nike Sport Band</span>
+                <div class="pagination">1 / 5</div>
+                <div class="navigation-arrows">
+                    <button class="arrow-left"><i class="icon-arrow-left"></i></button>
+                    <button class="arrow-right"><i class="icon-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section class="catalog-section">
+        <div class="catalog-header">
+            <h2 class="catalog-title">Catalog hermes</h2>
+            <div class="catalog-filters">
+                <div class="filter">
+                    <span>Case Size</span>
+                    <i class="icon-chevron-down"></i>
+                </div>
+                <div class="filter">
+                    <span>Collection</span>
+                    <i class="icon-chevron-down"></i>
+                </div>
+                <div class="filter">
+                    <span>Band Type</span>
+                    <i class="icon-chevron-down"></i>
+                </div>
+                <div class="filter">
+                    <span>Band Color</span>
+                    <i class="icon-chevron-down"></i>
+                </div>
+                <div class="filter active">
+                    <span>All Hermes</span>
+                </div>
+            </div>
+        </div>
+        <div class="catalog-grid">
+            <div class="catalog-item">
+                <div class="item-image">
+                    <img src="assets/images/shoe_4.jpg" alt="Orange Hermes Band">
+                </div>
+                <div class="item-content">
+                    <h3>Made to push boundaries</h3>
+                    <div class="size-options">
+                        <button class="size-option">L</button>
+                        <button class="size-option">M</button>
+                    </div>
+                    <p>Three straps designed for Apple Watch Ultra 2. Uniquely tailored for the demanding needs of all
+                        outdoor adventures and ocean sports.</p>
+                    <div class="price">£299.00</div>
+                </div>
+            </div>
+            <div class="catalog-item">
+                <div class="item-image">
+                    <img src="assets/images/shoe_5.jpg" alt="Orange Band Full">
+                </div>
+                <div class="item-description">
+                    <p>Three straps designed for Apple Watch Ultra 2. Uniquely tailored for the demanding needs of all
+                        outdoor adventures and ocean sports.</p>
+                    <div class="band-types">
+                        <span class="band-type">Sport Loop</span>
+                        <span class="band-type">Sport Band</span>
+                    </div>
+                    <div class="band-brands">
+                        <span class="brand">Nike sport</span>
+                        <span class="brand">Hermès</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

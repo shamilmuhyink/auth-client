@@ -1,0 +1,60 @@
+// Typography scale
+$font-sizes: (
+  'xs': 0.75rem,    // 12px
+  'sm': 0.875rem,   // 14px
+  'base': 1rem,     // 16px
+  'lg': 1.125rem,   // 18px
+  'xl': 1.25rem,    // 20px
+  '2xl': 1.5rem,    // 24px
+  '3xl': 1.875rem,  // 30px
+  '4xl': 2.25rem,   // 36px
+  '5xl': 3rem,      // 48px
+);
+
+// Font weights
+$font-weights: (
+  'regular': 400,
+  'medium': 500,
+  'bold': 700,
+);
+
+// Line heights
+$line-heights: (
+  'tight': 1.2,
+  'normal': 1.5,
+  'relaxed': 1.75,
+);
+
+// Utility classes for typography
+@each $name, $size in $font-sizes {
+  .text-#{$name} {
+    font-size: $size;
+  }
+}
+
+@each $name, $weight in $font-weights {
+  .font-#{$name} {
+    font-weight: $weight;
+  }
+}
+
+@each $name, $height in $line-heights {
+  .leading-#{$name} {
+    line-height: $height;
+  }
+}
+
+// Responsive typography
+@media (max-width: 768px) {
+  html {
+    font-size: 14px; // Slightly smaller base font on mobile
+  }
+  
+  .text-5xl {
+    font-size: 2.5rem; // Adjust large headings for mobile
+  }
+  
+  .text-4xl {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,28 @@
+<header class="header">
+    <div class="logo-container">
+        <a href="#" class="logo">
+            <img src="assets/images/logo.svg" alt="Logo">
+            <span>appherm</span>
+        </a>
+    </div>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#" [class.active]="activeRoute === 'catalog'">Catalog hermes</a></li>
+            <li><a href="#" [class.active]="activeRoute === 'gallery'">Gallery</a></li>
+            <li><a href="#" [class.active]="activeRoute === 'payment'">Payment</a></li>
+            <li><a href="#" [class.active]="activeRoute === 'delivery'">Delivery</a></li>
+            <li><a href="#" [class.active]="activeRoute === 'support'">Support</a></li>
+            <li><a href="#" [class.active]="activeRoute === 'blog'">Blog</a></li>
+            <li><a href="#" [class.active]="activeRoute === 'contacts'">Contacts</a></li>
+        </ul>
+    </nav>
+    <div class="header-actions">
+        <button class="btn-search" (click)="onSearchClick()">
+            <i class="icon-search"></i>
+        </button>
+        <button class="btn-cart" (click)="onCartClick()">
+            <i class="icon-cart"></i>
+            <span class="cart-count">{{cartItemCount}}</span>
+        </button>
+    </div>
+</header>

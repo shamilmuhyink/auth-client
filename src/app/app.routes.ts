@@ -15,6 +15,12 @@ export const routes: Routes = [
     title: 'Sign Up'
   },
   {
+    path: 'home',
+    loadComponent: () => import('./components/home/home.component').then(m => m.HomeComponent),
+    // canActivate: [authGuard],
+    title: 'Home'
+  },
+  {
     path: 'auth/callback',
     component: OAuthCallbackComponent,
     title: 'Authentication'

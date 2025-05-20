@@ -1,114 +1,135 @@
-# Auth Client
+# Auth Client 🔐
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.9.
+[![Angular](https://img.shields.io/badge/Angular-17-dd0031.svg)](https://angular.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue.svg)](https://www.typescriptlang.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## Project Overview
+A modern authentication client built with Angular 17, featuring comprehensive user authentication and authorization capabilities.
 
-This application provides a complete authentication solution with the following features:
+## 🚀 Features
 
-- User login and registration
-- JWT token-based authentication
-- Token refresh mechanism
-- Password reset functionality
-- Email verification
-- Role-based access control
-- OAuth2 social login integration
+- **User Authentication**
+  - Email/Password login
+  - Social login (Google, GitHub)
+  - JWT token management
+  - Automatic token refresh
+  - Session management
 
-## Development server
+- **User Management**
+  - Registration with email verification
+  - Password reset/recovery
+  - Profile management
+  - Role-based access control
 
-To start a local development server, run:
+- **Security**
+  - HTTP interceptors for auth headers
+  - Route guards
+  - CSRF protection
+  - Secure token storage
 
+## 📋 Prerequisites
+
+- Node.js (v18 or later)
+- npm (v9 or later)
+- Angular CLI (v17 or later)
+
+## 🛠️ Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/shamilmuhyink/auth-client.git
+cd auth-client
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Configure environment:
+```bash
+cp src/environments/environment.example.ts src/environments/environment.ts
+```
+
+4. Start development server:
 ```bash
 ng serve
 ```
 
-For server-side rendering (SSR) during development:
+## 📚 Documentation
 
-```bash
-ng serve --ssr
+Detailed documentation is available in the [docs](./docs) directory:
+
+- [Getting Started](./docs/getting-started.md)
+- [Architecture Overview](./docs/architecture.md)
+- [Component Documentation](./docs/components/README.md)
+- [API Reference](./docs/api-reference.md)
+- [Development Guide](./docs/development-guide.md)
+
+## 🏗️ Project Structure
+
+```
+src/
+├── app/
+│   ├── components/      # Reusable UI components
+│   ├── core/           # Core functionality
+│   ├── features/       # Feature modules
+│   ├── guards/         # Route guards
+│   ├── interceptors/   # HTTP interceptors
+│   ├── models/         # TypeScript interfaces
+│   ├── services/       # Application services
+│   └── shared/         # Shared modules
+├── assets/            # Static assets
+├── environments/      # Environment configurations
+└── styles/           # Global styles
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🧪 Testing
 
-## Project Structure
-
-The authentication system consists of:
-
-- **Services**:
-  - `AuthService`: Core authentication functionality
-  - `PlatformService`: Handles browser vs. server environment differences
-
-- **Components**:
-  - `LoginComponent`: User login form
-  - `RegisterComponent`: User registration form
-  - `ResetPasswordComponent`: Password reset functionality
-  - `VerifyEmailComponent`: Email verification
-
-- **Guards**:
-  - `AuthGuard`: Protects routes requiring authentication
-
-- **Interceptors**:
-  - `AuthInterceptor`: Automatically adds authentication tokens to requests
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-For a production build with server-side rendering:
-
-```bash
-ng build --configuration production
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Environment Configuration
-
-The application uses environment files to configure API endpoints:
-
-- `environment.ts`: Development environment settings
-- `environment.prod.ts`: Production environment settings
-
-Make sure to update the `apiUrl` in these files to point to your authentication backend.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
+Run unit tests:
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
+Run e2e tests:
 ```bash
 ng e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 🚀 Deployment
 
-## Additional Resources
+Build for production:
+```bash
+ng build --configuration production
+```
 
-- [Angular Documentation](https://angular.dev/)
-- [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli)
-- [JWT Authentication Best Practices](https://auth0.com/blog/refresh-tokens-what-are-they-and-when-to-use-them/)
+For SSR deployment:
+```bash
+ng build --configuration production
+ng run auth-client:server:production
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👥 Authors
+
+- Your Name - [GitHub Profile](https://github.com/shamilmuhyink)
+
+## 🙏 Acknowledgments
+
+- [Angular Team](https://angular.io/)
+- [Angular CLI](https://cli.angular.io/)
+
+## 📞 Support
+
+For support, email shamilmuhyin@gmail.com or create an issue in the repository.
