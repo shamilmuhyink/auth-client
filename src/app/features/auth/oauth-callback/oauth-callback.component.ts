@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Router } from "@angular/router";
-import { AuthService } from "../../services/auth.service";
-import { PlatformService } from "../../services/platform.service";
+import { AuthService } from "../../../core/auth/services/auth.service";
+import { PlatformService } from "../../../core/services/platform.service";
 
 @Component({
   selector: 'app-oauth-callback',

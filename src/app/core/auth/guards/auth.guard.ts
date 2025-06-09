@@ -7,9 +7,9 @@ import {
   UrlTree
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../services/auth.service';
 import { inject } from '@angular/core';
 import { map } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 export const authGuard = () => {
   const authService = inject(AuthService);

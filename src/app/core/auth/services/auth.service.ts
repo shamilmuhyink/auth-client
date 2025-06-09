@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError, of } from 'rxjs';
 import { catchError, map, tap, switchMap, filter, take, finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment';
-import { PlatformService } from './platform.service';
+import { environment } from '../../../../environments/environment';
 import {
   AuthResponse,
   LoginRequest,
@@ -14,8 +13,9 @@ import {
   VerifyEmailRequest,
   JwtPayload,
   OAuth2CallbackRequest,
-} from '../models/auth.model';
+} from '../../auth/models/auth.model';
 import { jwtDecode } from 'jwt-decode';
+import { PlatformService } from '../../services/platform.service';
 
 @Injectable({
   providedIn: 'root',

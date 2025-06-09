@@ -8,9 +8,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { PlatformService } from '../../services/platform.service';
 import { first } from 'rxjs/operators';
+import { AuthService } from '../../../core/auth/services/auth.service';
+import { PlatformService } from '../../../core/services/platform.service';
 
 @Component({
   selector: 'app-login',
