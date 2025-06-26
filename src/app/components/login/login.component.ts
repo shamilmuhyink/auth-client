@@ -39,14 +39,14 @@ export class LoginComponent implements OnInit {
       rememberMe: [false],
     });
 
-    // Get return url from route parameters or default to '/dashboard'
-    this.returnUrl =
-      this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
 
-    // Auto-navigate to returnUrl if already logged in
-    if (this.authService.isLoggedIn()) {
-      this.router.navigate([this.returnUrl]);
-    }
+    // Check authentication status asynchronously
+    this.authService.isAuthenticated$.pipe(first()).subscribe(isAuthenticated => {
+      if (isAuthenticated) {
+        this.router.navigate([this.returnUrl]);
+      }
+    });
   }
 
   // Convenience getter for easy access to form fields
